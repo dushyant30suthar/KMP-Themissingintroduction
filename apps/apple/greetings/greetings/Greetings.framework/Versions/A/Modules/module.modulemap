@@ -1,0 +1,8 @@
+framework module "Greetings" {
+    umbrella header "Greetings.h"
+
+    export *
+    module * { export * }
+
+    use Foundation
+}
