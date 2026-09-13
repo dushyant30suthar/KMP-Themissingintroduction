@@ -4,23 +4,27 @@ plugins {
 
 kotlin {
     // --- Native Machine platform ---
-    // The previous article used macosArm64 (builds only on a Mac).
-    // On this Linux host the buildable native target is linuxX64.
+    // A shared library: machine code another program links against.
+    // (The previous article built an executable here; this one builds a library.)
     linuxX64 {
         binaries {
-            executable()
+            sharedLib()
         }
     }
 
     // --- JVM platform ---
+    // A jar of Java bytecode, consumed by any JVM program.
     jvm()
 
     // --- Web platform ---
+    // JavaScript and WebAssembly, shipped as npm packages.
     js {
+        binaries.library()
         browser()
         nodejs()
     }
     wasmJs {
+        binaries.library()
         browser()
         nodejs()
     }
