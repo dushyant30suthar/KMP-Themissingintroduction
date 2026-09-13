@@ -1,18 +1,32 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-
 }
 
 kotlin {
-    macosArm64().binaries.framework {
-        baseName = "Greetings"
-        isStatic = true
+    // --- Native Machine platform ---
+    // The previous article used macosArm64 (builds only on a Mac).
+    // On this Linux host the buildable native target is linuxX64.
+    linuxX64 {
+        binaries {
+            executable()
+        }
     }
 
+    // --- JVM platform ---
+    jvm()
+
+    // --- Web platform ---
+    js {
+        browser()
+        nodejs()
+    }
+    wasmJs {
+        browser()
+        nodejs()
+    }
 
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
