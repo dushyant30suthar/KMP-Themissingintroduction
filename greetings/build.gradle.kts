@@ -1,6 +1,14 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    // This article: publishing. The Kotlin plugin creates one publication
+    // per target when maven-publish is applied.
+    `maven-publish`
 }
+
+// Maven coordinates: group:artifact:version. The artifact is the project
+// name, plus a suffix per target (greetings, greetings-jvm, greetings-js, ...).
+group = "com.theemergentnarrative"
+version = "1.0.0"
 
 kotlin {
     // --- Native Machine platform ---
