@@ -16,13 +16,14 @@ kotlin {
     jvm()
 
     // --- Web platform ---
+    // Runnable here under Node.js, a JavaScript engine that runs outside a browser.
     js {
-        browser()
         nodejs()
+        binaries.executable()
     }
     wasmJs {
-        browser()
         nodejs()
+        binaries.executable()
     }
 
     sourceSets {
